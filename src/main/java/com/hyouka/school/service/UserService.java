@@ -15,15 +15,15 @@ public class UserService {
     private UserMapper userMapper;
 
 
-    public List<User> getAllUser(){
+    public List<User> getAllUser() {
         return userMapper.selectAll();
     }
 
-    public User getOneUser(String id){
+    public User getOneUser(String id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    public int updateUser(User user){
+    public int updateUser(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
     }
 }
