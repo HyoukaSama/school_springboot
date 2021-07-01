@@ -26,4 +26,8 @@ public class UserService {
     public int updateUser(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
     }
+
+    public int saveUser(User user) {
+        return userMapper.insert(user);
+    }
 }

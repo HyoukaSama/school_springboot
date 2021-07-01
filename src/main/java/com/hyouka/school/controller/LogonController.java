@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LogonController {
 
     @RequestMapping(value = "index")
-    public String index(){
+    public String index() {
         return "index";
     }
 
 
-    @RequestMapping(value = "login")
-    public String login(){
-        return "login";
+    @RequestMapping(value = "login/index")
+    public String login() {
+        return "login/index";
     }
 }
