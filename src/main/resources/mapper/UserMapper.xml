@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyouka.school.mapper.UserMapper">
+    <!--第一种方式，注解sql在方法上-->
+    <!--第二种方式对应的sql-->
+    <!--第三种方式，是通用mapper现成的增删改查sql，不用在文件中体现-->
+</mapper>
