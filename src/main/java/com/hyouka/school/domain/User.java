@@ -10,9 +10,11 @@ import javax.persistence.Table;
 
 @Getter(value = AccessLevel.PUBLIC)
 @Setter(value = AccessLevel.PUBLIC)
-@ToString(exclude ={"createtime"})
+@ToString(exclude = {"createtime"})
 @Data
 @Table(name = "user")
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class User {
     @Id
     @KeySql(genId = UUID.class)

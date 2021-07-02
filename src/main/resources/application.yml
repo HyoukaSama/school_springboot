@@ -10,6 +10,27 @@ spring:
       prefix: /WEB-INF/
       suffix: .jsp
 
+  application:
+    name: springboot-transcational
+
+  messages:
+    encoding: UTF-8
+
+
+  #配置redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: baobao123
+    database: 0
+    jedis:
+      pool:
+        max-active: 50
+        max-wait: 3000
+        max-idle: 20
+        min-idle: 2
+    timeout: 5000
+
 #配置mybatis
 mybatis:
   typeAliasesPackage: com.hyouka.school.domain
@@ -29,6 +50,8 @@ mapper:
 
 #配置Tomcat，配置80，可在浏览器访问项目时不用加端口号（默认端口8080）
 server:
+  tomcat:
+    uri-encoding: UTF-8
   port: 80
 
 logging:

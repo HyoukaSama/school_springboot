@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -24,7 +25,7 @@ public class UserController {
 
     @RequestMapping(value = "/saveUser")
     @ResponseBody
-    public String saveUser(HttpServletRequest request) {
+    public String saveUser(HttpServletRequest request) throws SQLException {
         User user = new User();
         user.setName(request.getParameter("username"));
         int result = userService.saveUser(user);
