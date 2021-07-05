@@ -25,5 +25,6 @@ public class User {
     private String account;
     private String password;
     private String createtime;
+    private String authority;
 
 }

@@ -6,6 +6,11 @@ import com.hyouka.school.mapper.UserMapper;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
@@ -14,6 +19,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +28,9 @@ public class UserService {
 
     @Resource
     private UserMapper userMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     public List<User> getAllUser() {
@@ -33,10 +42,17 @@ public class UserService {
     }
 
     public int updateUser(User user) {
+        if (user.getPassword() != null && !user.getPassword().trim().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         return userMapper.updateByPrimaryKeySelective(user);
     }
 
     public int saveUser(User user) {
+        if (user.getPassword() != null && !user.getPassword().trim().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+
         return userMapper.insert(user);
     }
 
@@ -111,15 +127,17 @@ public class UserService {
 
     }
 
-    @Autowired
+
+
+   /* @Autowired
     private DataSourceTransactionManager dataSourceTransactionManager;
     @Autowired
     private TransactionDefinition transactionDefinition;
 
     public boolean test4(User user) {
-        /*
-         * 手动进行事物控制
-         */
+        *//*
+     * 手动进行事物控制
+     *//*
         TransactionStatus transactionStatus = null;
         boolean isCommit = false;
         try {
@@ -151,5 +169,5 @@ public class UserService {
             e.printStackTrace();
         }
         return false;
-    }
+    }*/
 }

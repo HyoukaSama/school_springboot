@@ -3,6 +3,7 @@ package com.hyouka.school.controller;
 
 import com.hyouka.school.domain.User;
 import com.hyouka.school.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +26,24 @@ public class UserController {
 
     @RequestMapping(value = "/saveUser")
     @ResponseBody
-    public String saveUser(HttpServletRequest request) throws SQLException {
-        User user = new User();
-        user.setName(request.getParameter("username"));
+    public String saveUser(User user) throws SQLException {
+
         int result = userService.saveUser(user);
 
         return result == 1 ? "插入成功" : "插入失败";
     }
 
+    @GetMapping(value = "/helloAdmin")
+    @PreAuthorize("hasAnyRole('admin')")
+    @ResponseBody
+    public String admin() {
+        return "admin";
+    }
+
+    @GetMapping(value = "/helloUser")
+    @PreAuthorize("hasAnyRole('admin','user')")
+    @ResponseBody
+    public String user() {
+        return "Hello,user";
+    }
 }

@@ -1,4 +1,4 @@
-import com.hyouka.school.utils.StudentConfig;
+import com.hyouka.school.config.StudentConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Test {

@@ -1,4 +1,4 @@
-package com.hyouka.school.utils;
+package com.hyouka.school.config;
 
 import com.hyouka.school.domain.Student;
 import org.springframework.context.annotation.Bean;

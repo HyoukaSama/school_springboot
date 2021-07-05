@@ -17,6 +17,9 @@ spring:
     encoding: UTF-8
 
 
+
+
+
   #配置redis
   redis:
     host: 127.0.0.1
